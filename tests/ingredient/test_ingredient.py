@@ -6,15 +6,20 @@ from src.models.ingredient import (
 
 # Req 1
 def test_ingredient():
-    ing_1 = Ingredient('carne')
-    ing_2 = Ingredient('manteiga')
-    ing_3 = Ingredient('carne')
+    ingredient = Ingredient("carne")
+    ingredient_1 = Ingredient("carne")
+    ingredient_2 = Ingredient("carne")
+    ingredient_3 = Ingredient("farinha")
 
-    assert ing_1.name == 'carne'
-    assert ing_2.name != 'farinha'
-    assert ing_1._hash() == ing_3.hash_()
-    assert ing_1._hash() != ing_2.hash_()
-    assert ing_1._repr_() == "Ingredient('carne')"
-    assert ing_1._eq_(ing_3)
-    assert ing_1.restrictions == {Restriction.ANIMAL_MEAT,
-                                  Restriction.ANIMAL_DERIVED}
+    assert repr(ingredient) == "Ingredient('carne')"
+    assert hash(ingredient_1) != hash(ingredient_3)
+    assert hash(ingredient_1) == hash(ingredient_2)
+
+    assert ingredient.name == "carne"
+    assert ingredient_1 != ingredient_3
+    assert ingredient_1 == ingredient_2
+
+    assert ingredient.restrictions == {
+        Restriction.ANIMAL_MEAT,
+        Restriction.ANIMAL_DERIVED,
+    }
