@@ -5,17 +5,16 @@ from src.models.ingredient import (
 
 # Req 1
 def test_ingredient():
-    ing_1 = Ingredient('manteiga')
+    ing_1 = Ingredient('farinha')
     ing_2 = Ingredient('carne')
-    ing_3 = Ingredient('manteiga')
+    ing_3 = Ingredient('farinha')
 
-    assert ing_1._repr_() == "Ingredient('manteiga')"
+    assert ing_1._repr_() == "Ingredient('farinha')"
     assert ing_1._hash() == ing_3.hash_()
     assert ing_1._hash() != ing_2.hash_()
 
-    assert ing_1.name == 'manteiga'
+    assert ing_1.name == 'farinha'
     assert ing_2.name != 'frango'
     assert ing_1._eq_(ing_3)
 
-    assert ing_1.restrictions == {Restriction.LACTOSE,
-                                  Restriction.ANIMAL_DERIVED}
+    assert ing_1.restrictions == {Restriction.GLUTEN}
